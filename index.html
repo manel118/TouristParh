@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tourist Path</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <link rel="icon" href="./images/planet-earth.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      box-sizing: border-box !important;
+    }
+
+    .kalam-bold {
+      font-family: "Kalam", cursive;
+      font-weight: 700;
+      font-style: normal;
+      background: -webkit-linear-gradient(top, rgb(255, 255, 255), rgba(11, 90, 15, 0.722), rgb(19, 121, 41));
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .kalam-regular {
+      font-family: "Kalam", cursive;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .kalam-light {
+      font-family: "Kalam", cursive;
+      font-weight: 300;
+      font-style: normal;
+    }
+
+    .clips {
+      clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 5% 100%);
+      object-fit: cover;
+      height: 100%;
+    }
+
+    .clipe {
+      clip-path: polygon(0% 0%, 80% 0%, 90% 100%, 0% 100%);
+      object-fit: cover;
+      height: 100%;
+
+
+    }
+
+    .elegant {
+      font-size: 92px;
+      padding: 80px 50px;
+      text-align: center;
+      text-transform: uppercase;
+      text-rendering: optimizeLegibility;
+      color: #2c2c2c;
+      background-color: #d5d5d5;
+      letter-spacing: .05em;
+      text-shadow:
+        2px 2px 0px #d5d5d5,
+        6px 6px 0px rgba(0, 0, 0, 0.2);
+
+    }
+
+
+
+    .trip-btn:hover {
+      box-shadow: 1px 1px 5px 1px rgb(17, 117, 72);
+
+    }
+
+    .agbalumo-regular {
+      font-family: "Agbalumo", system-ui;
+      font-weight: 400;
+      font-style: normal;
+      letter-spacing: 1px;
+
+    }
+
+    .playfair-display {
+      font-family: "Playfair Display", serif;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+    }
+
+
+    body {
+      position: relative;
+    }
+
+    .c-img {
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.6);
+
+    }
+
+    .dark-green {
+      color: rgb(164, 189, 164);
+    }
+
+    nav {
+      opacity: 0.94;
+    }
+
+    .icons {
+      position: fixed;
+      z-index: 100;
+      top: 30%;
+      right: 0;
+
+    }
+
+    .icons>a:hover {
+      color: rgb(38, 77, 38);
+    }
+
+    .gradiant-text {
+      background: -webkit-linear-gradient(top, rgb(255, 255, 255), rgb(251, 228, 186), rgb(245, 155, 155));
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .grand-accord {
+      background: -webkit-linear-gradient(rgb(251, 255, 252), rgba(75, 238, 116, 0.473), rgba(20, 125, 24, 0.692), rgb(0, 0, 0));
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .copy-tooltip {
+      position: absolute !important;
+      z-index: 22;
+      font-size: 15px !important;
+      transform: translate(0, 150%);
+      visibility: hidden;
+    }
+
+    .b-tooltip:hover {}
+
+    .b-tooltip:hover+.copy-tooltip {
+      visibility: visible;
+
+    }
+
+    .fig-fixed1 {
+      width: 100%;
+      height: 300px;
+      background-image: url("./images/csroll3.jpg");
+      background-attachment: fixed;
+      /* background-size: contain; */
+      position: relative;
+      object-fit: cover;
+    }
+    .fig-fixed2 {
+      width: 100%;
+      height: 300px;
+      background-image: url("./images/cs1.jpg");
+      background-attachment: fixed;
+      background-size: cover;
+      position: relative;
+      
+    }
+
+    .card-father .col .card-overley {
+      position: relative;
+    }
+
+    .card-overley::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 0%;
+      background-color: rgb(141, 255, 173);
+      opacity: 0.2;
+      top: 0;
+      left: 0;
+      visibility: hidden;
+      border-radius: 1.5%;
+
+    }
+
+    .card-overley:hover::after {
+      width: 100%;
+      height: 100%;
+      visibility: visible;
+      transition: 0.6s;
+    }
+
+    .card-overley::before {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 0%;
+      background-color: rgb(141, 255, 173);
+      opacity: 0.2;
+      bottom: 0;
+      right: 0;
+      visibility: hidden;
+      border-radius: 1.5%;
+    }
+
+    .card-overley:hover::before {
+      width: 100%;
+      height: 100%;
+      visibility: visible;
+      transition: 0.6s;
+    }
+
+    .card-father .col .card {
+      width: 350px;
+      height: fit-content;
+    }
+
+    .review-overley {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(7, 7, 7, 0.6);
+      ;
+      top: 0;
+      transition: 0.5s;
+      border-radius: 35px;
+    }
+
+    .review-overley+div {
+      position: absolute;
+      z-index: 2;
+      padding: 20px;
+      transition: 0.4s;
+
+    }
+
+    .review-overley+div:hover {
+      padding-top: 35px;
+    }
+
+    #reviews .card {
+      position: relative;
+      transition: 0.4s;
+      border-radius: 35px;
+    }
+
+    #reviews .card>img {
+      box-shadow: 12px 12px 2px 1px rgba(18, 92, 25, 0.2);
+    }
+
+
+    #reviews .card:hover {
+      transform: scale(0.9);
+    }
+
+    #reviews .card:hover .review-overley {
+      background-color: rgba(49, 110, 83, 0.6);
+
+    }
+
+    .bottom-line {
+      width: 50px;
+      height: 4px;
+      margin-top: 25px;
+      /* background-color: rgba(9, 65, 30, 0.734); */
+      background: -webkit-linear-gradient(left, rgba(75, 238, 116, 0.473), rgba(20, 125, 24, 0.692));
+      border-radius: 15%;
+      transform: translateY(-550%);
+    }
+
+    .podcasts button {
+      border-radius: 10px;
+    }
+
+    .podcasts button:hover {
+      background-color: rgba(106, 106, 106, 0.396);
+    }
+
+    .podcasts .buttons button:last-of-type:hover {
+      color: rgb(255, 136, 0) !important;
+
+    }
+
+    .podcasts .buttons button:last-of-type:hover i {
+      color: rgb(255, 136, 0) !important;
+
+    }
+
+    .podcasts .card {
+      height: 300px;
+      width: 90%;
+    }
+
+    .podcasts .card .row .col {
+      height: 100%;
+    }
+
+    .join-us .row {
+      width: 90%;
+      margin: auto;
+    }
+
+.join-us a:hover{
+  transform: scale(0.9);
+  transform: rotate(360deg);
+  transition: 0.5s;
+}
+
+
+    footer a {
+      border-top: 1px solid white;
+      border-bottom: 1px solid white;
+      padding: 15px 0px;
+      width: 100%;
+    }
+
+    footer a {
+      text-shadow: 1px 1px 8px white;
+      margin-bottom: 10px;
+    }
+
+    footer a span {
+      color: rgb(255, 239, 165) !important;
+      text-shadow: 0px 0px 0px white;
+      margin-left: 10px;
+
+    }
+
+    footer p:last-of-type {
+      font-size: 20px;
+      color: white;
+      background-color: transparent;
+      padding: 0;
+    }
+
+    footer p:hover {
+      color: rgba(33, 33, 85, 0.834) !important;
+      cursor: pointer;
+    }
+
+    @media (max-width : 785px) {
+      .podcasts .card {
+        height: 550px;
+        width: 100%;
+
+        .clipe {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .clips {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+      }
+
+      .podcasts .card .row .col {
+        height: 50% !important;
+      }
+
+      .podcasts .card .row .col img {
+        border-radius: 5px 5px 0% 0% !important;
+
+      }
+    }
+  </style>
+
+</head>
+
+<body class="playfair-display">
+
+  <div class="icons d-flex flex-column me-3 me-sm-5  display-5 lh-base lh-sm-lg ">
+    <a href="#" class="link dark-green"> <i class="bi bi-facebook"></i></a>
+    <a href="#" class="link dark-green"> <i class="bi bi-twitter-x"></i> </a>
+    <a href="#" class="link dark-green"><i class="bi bi-instagram"></i></a>
+    <a href="#" class="link dark-green"> <i class="bi bi-whatsapp"></i></a>
+    <a href="#" class="link dark-green"> <i class="bi bi-linkedin"></i> </a>
+  </div>
+
+  <!------------------------------------------------------ navbar --------------------------------------------------------->
+
+  <nav class=" navbar fixed-top  shadow-lg bg-white py-2 border- navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+
+      <a class="navbar-brand ms-2 text-success fw-bold mx-5 agbalumo-regular" href="#">
+        <i class="bi bi-globe-europe-africa me-1 fs-3"></i>
+        Tourist Path
+      </a>
+      <div class="vr d-none d-md-block"></div>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse  ms-4 justify-content-between" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#home">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class=" py-2 dropdown-toggle btn btn-success px-3 trip-btn mx-md-3" role="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Trips
+            </a>
+            <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-purple-200 active-primary" aria-current="page" href="#">Rviews</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+
+
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-success " type="submit">Search</button>
+          <button class="btn btn-outline-success ms-2" data-bs-toggle="modal" data-bs-target="#login-modal"
+            type="button">
+            Login
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Modal -->
+  <div class="modal " id="login-modal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="">
+          <div class="modal-header bg-success">
+            <h5 class="text-white modal-title" id="loginModalLabel">
+              Login Form
+            </h5>
+            <button type="button" class="btn-close btn-close-white " data-bs-dismiss="modal"
+              aria-label="Close"></button>
+          </div> <!-- header -->
+
+          <div class="modal-body mx-4 mt-2">
+            <label for="email" class="form-label text-success fw-bold">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+            <p class="text-muted">we'll never share your email with anyone else</p>
+            <label for="password" class="form-label text-success fw-bold">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="******">
+
+            <div class="form-check form-switch mt-3 ms-3 ">
+              <input class="form-check-input bg-success" type="checkbox" id="flexSwitchCheckDefault">
+              <label class="form-check-label text-success " for="flexSwitchCheckDefault">remember me</label>
+            </div>
+          </div> <!-- modal-body -->
+
+          <div class="modal-footer justify-content-between mx-4 mt-1">
+            <button type="submit" class="btn btn-success mt-3" data-bs-dismiss="modal">
+              Login
+            </button>
+            <button type="submit" class="btn btn-success mt-3">
+              close
+            </button>
+          </div> <!-- footer -->
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!------------------------------------------------------ carousal--------------------------------------------------------->
+
+  <div class="container-fluid ">
+    <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true"
+          aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner vh-100 icons-parent">
+
+        <div class="carousel-item active  vh-100">
+          <img src="./images/jeune-voyageuse-profitant-environnement-rural.jpg" class="d-block w-100 c-img"
+            alt="Slide 1">
+          <div class="carousel-caption  rounded-2 w-75 mx-auto mb-3"
+            style="background-color: rgba(255, 255, 255, 0.5);">
+            <h4 class="display-5">Travel apportunities</h4>
+            <p class="text-light">with interisting group of people</p>
+            <button class=" btn btn-success px-5 py-3">Book now</button>
+          </div>
+        </div>
+        <div class="carousel-item  vh-100">
+          <img src="./images/vue-carte-voyage-du-monde-passeports-boussole.jpg" class="d-block w-100 c-img"
+            alt="Slide 2">
+          <div class="carousel-caption  rounded-2 w-75 mx-auto mb-3"
+            style="background-color: rgba(172, 172, 172, 0.8);">
+            <h4 class="display-5">Language tourist courses</h4>
+            <p class="text-light">comunicate with people easily and freely</p>
+            <button class=" btn btn-success px-5 py-3">Book now</button>
+          </div>
+        </div>
+        <div class="carousel-item vh-100">
+          <img src="./images/couple-touristes-route.jpg" class="d-block w-100 c-img" alt="Slide 3">
+          <div class="carousel-caption  rounded-2 w-75 mx-auto mb-3"
+            style="background-color: rgba(172, 172, 172, 0.8);">
+            <h4 class="display-5">Expert guides company</h4>
+            <p class="text-light">get the extreme benifit of your trip</p>
+            <button class=" btn btn-success px-5 py-3">Book now</button>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div class="shadow-lg rounded-bottom" style="background-color: rgb(119, 156, 119);">
+      <h2 class="ms-4 pt-3 text-white fs-2 gradiant-text">Welcome</h2>
+      <p class="playfair-display fs-5 text-light ms-4">Want to have a family special summer trip with the cheepst costs,
+        beautifull and unique places ? <br>here some compelling offers from agencies in the world wide, you will be able
+        to find the offer that suits you! </p>
+      <button class="fs-5 btn btn-outline-light capitalize rounded-pill ms-4 mb-3">Learn more</button>
+    </div>
+  </div>
+
+  <hr class="my-4">
+
+  <!-------------------------------------------------------------------- Most populat places ------------------------------------------------------>
+
+  <section class="container-fluid">
+    
+
+    <h1 class="kalam-bold fs-1 w-100  my-0  my-3 text-center py-3 text-capitalize">
+      Most popular touristic spots
+    </h1>
+
+    <div class="accordion shadow-lg" id="accordionExample">
+
+      <div class="accordion-item">
+        <h2 class="accordion-header shadow-lg" id="headingOne">
+          <button class="accordion-button fs-5 fw-bold grand-accord" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Istanbul
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong> If only for one day of the year</strong>, the city of Istanbul cannot stop receiving its visitors
+            from the
+            lovers of tourism, who come from the ends of the world to witness with their eyes this
+            unique combination that the city embraces between originality and contemporaneous.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header shadow-lg" id="headingTwo">
+          <button class="accordion-button collapsed fs-5 fw-bold grand-accord" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Osaka
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong> Osak Japan's third-largest city, </strong>the vibrant Osaka is ideal for anyone seeking a culinary
+            adventure and plenty of culture. Osaka city is called the Nation’s Kitchen thanks to its
+            famous street food scene. There is nothing like a Japanese street food stall –
+            you can have plenty of great nights out nibbling on food and sipping drinks as you hop from
+            one stall to the next.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header shadow-lg bg-light" id="headingThree">
+          <button class="accordion-button collapsed fw-bold fs-5 grand-accord" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Socatra </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>The Socotra Archipelago</strong> lies in the Indian Ocean between the Arabian Peninsula and the Horn
+            of Africa being located some 240km east of Cap Guardafui (Somalia) and some 380km south of Ras Fartak, (Al
+            Mahrah, Yemen).
+            Socotra is one of the most isolated landforms on Earth of continental origin, meaning it is non-volcanic but
+            a fragment of the ancient southern supercontinent of Gondwana
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-4">
+
+  <!-- -------------------------------------------------------------- translations service ----------------------------------------------------------- -->
+
+  <section id="translation" class="container-fluid translate-section">
+    <!-- <h1 class=" w-25 text-success border-success text-center shadow-lg mb-4 py-3 rounded-4 d-inline-block">
+translation service  </h1> -->
+<h1 class="kalam-bold fs-2 w-100  my-0  mt-2 text-center py-3 text-capitalize">
+  translate from French to English
+</h1>
+
+    <div class="translate-item1 shadow-lg my-4">
+      <div class="w-100 text-light fs-5 py-2 container-fluid  rounded-3" style="background-color: rgba(120, 188, 120, 0.626);">
+        <p class=" ">write and translate <a href="#" class="text-decoration-none link-dark link fw-bold ">Press here</a>
+        </p>
+        <button class="btn  btn-outline-success b-tooltip" data-bs-toggle="modal" data-bs-target="#copy-modal"
+        type="button" >Copy</button>
+        <small id="" class="copy-tooltip rounded-end rounded-bottom  px-3 border border-white"
+          style="background-color: rgb(48, 139, 92); ">copy to clipboard</small>
+        <div class="form-floating mt-3">
+          <textarea class="form-control " placeholder="Leave a comment here" id="floatingTextarea"
+            style="height: 150px;"></textarea>
+          <label for="floatingTextarea">Comments</label>
+        </div>
+      </div>
+    </div> <!-- translate from french to english   -->
+    <hr class="my-4">
+    <h1 class="kalam-bold fs-2 w-100  my-0  mt-2 text-center py-3 text-capitalize">
+      translate from japanese to English
+    </h1>
+    <div class="translate-item1  shadow-lg my-4">
+     
+      <div class="w-100 text-light fs-5 py-2 container-fluid rounded-3" style="background-color: rgba(120, 188, 120, 0.626);">
+        <p class=" ">write and translate <a href="#" class="text-decoration-none link-dark link fw-bold ">Press here</a>
+        </p>
+        <button class="btn  btn-outline-success b-tooltip" data-bs-toggle="modal" data-bs-target="#copy-modal" type="button">Copy</button>
+        <small id="" class="copy-tooltip rounded-end rounded-bottom  px-3 border border-white"
+          style="background-color: rgb(48, 139, 92); ">copy to clipboard</small>
+
+        <div class="form-floating mt-3">
+          <textarea class="form-control " placeholder="Leave a comment here" id="floatingTextarea"
+            style="height: 150px;"></textarea>
+          <label for="floatingTextarea">Comments</label>
+        </div>
+      </div>
+    </div> <!-- translate to japanese -->
+    <hr class="my-4">
+    <h1 class="kalam-bold fs-2 w-100  my-0  mt-2 text-center py-3 text-capitalize">
+      translate from Turkish to English
+    </h1>
+    <div class="translate-item1 shadow-lg my-4">
+      
+      <div class="w-100 text-light fs-5 py-2 container-fluid  rounded-3" style="background-color: rgba(120, 188, 120, 0.626);">
+        <p class=" ">write and translate <a href="#" class="text-decoration-none link-dark link fw-bold ">Press here</a>
+        </p>
+        <button class="btn  btn-outline-success b-tooltip " data-bs-toggle="modal" data-bs-target="#copy-modal" type="button">Copy</button>
+        <small id="" class="copy-tooltip rounded-end rounded-bottom  px-3 border border-white"
+          style="background-color: rgb(48, 139, 92); ">copy to clipboard</small>
+
+        <div class="form-floating mt-3">
+          <textarea class="form-control " placeholder="Leave a comment here" id="floatingTextarea"
+            style="height: 150px;"></textarea>
+          <label for="floatingTextarea">Comments</label>
+        </div>
+      </div>
+    </div> <!-- translate to turkish  -->
+    <hr class="my-4">
+   
+  </section>
+  <div class="modal fade" id="copymodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+       
+        <div class="modal-body">
+        <p class="float-end"> تم نسخ النص</p> 
+        </div>
+        <div class="modal-footer">
+          
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <figure class="fig-fixed1 m-0">
+  </figure>
+
+  <h1 class="kalam-bold fs-1 w-100  my-0  my-4 text-center py-3 text-capitalize">
+    Current collective trip offers
+  </h1>
+  <!-- -------------------------------------------------------------- popular distanations ----------------------------------------------------------- -->
+  <section class="container-lg">
+
+    <div class="card-father row my-5 justify-content-around gx-5 gy-3 align-items-center">
+
+      <div class="col col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card card-overley ">
+          <img src="./images/711fc66ad0ec6db6a788f1094ec92894.jpg" height="400" width="150" alt=""
+            class="card-img p-2 rounded-4 ">
+          <div class="card-body mt-0">
+            <h1 class="lead fs-2 d-inline kalam-bold">Socatra</h1>
+            <button class="btn btn-success float-end">learn more</button>
+            <p class=" text-start "> <i class=" bi text-success bi-calendar-range-fill me-2 "></i>two days tour</p>
+            <p class="text-start mt-0 "><i class="bi text-success bi-calendar-check-fill me-2"></i> 28/01/20023 |
+              30/01/2023</p>
+          </div>
+        </div> <!--  card element -->
+      </div>
+      <div class="col col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card card-overley">
+          <img src="./images/269fcc693cf486c746860e9c1b516ce9.jpg" height="400" width="150" alt=""
+            class="card-img p-2 rounded-4 ">
+          <div class="card-body mt-0">
+            <h1 class="lead fs-2 d-inline kalam-bold">Istanbul</h1>
+            <button class="btn btn-success float-end">learn more</button>
+            <p class=" text-start "> <i class=" bi text-success bi-calendar-range-fill me-2 "></i>two days tour</p>
+            <p class="text-start mt-0 "><i class="bi text-success bi-calendar-check-fill me-2"></i> 28/01/20023 |
+              30/01/2023</p>
+          </div>
+        </div> <!--  card element -->
+      </div>
+      <div class="col col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card card-overley">
+          <img src="./images/4fb1c99d71db0f1f120f7fcbbe5e405e.jpg" height="400" width="150" alt=""
+            class="card-img  p-2 rounded-4 ">
+          <div class="card-body mt-0">
+            <h1 class="lead fs-2 d-inline kalam-bold">Osaka</h1>
+            <button class="btn btn-success float-end">learn more</button>
+            <p class=" text-start "> <i class=" bi text-success bi-calendar-range-fill me-2 "></i>two days tour</p>
+            <p class="text-start mt-0 "><i class="bi text-success bi-calendar-check-fill me-2"></i> 28/01/20023 |
+              30/01/2023</p>
+          </div>
+        </div> <!--  card element -->
+      </div>
+      <div class="col col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card card-overley">
+          <img src="./images/milan.jpg" height="400" width="150" alt="" class="card-img p-2 rounded-4 ">
+          <div class="card-body mt-0">
+            <h1 class="lead fs-2 d-inline kalam-bold">Milan</h1>
+            <button class="btn btn-success float-end">learn more</button>
+            <p class=" text-start "> <i class=" bi text-success bi-calendar-range-fill me-2 "></i>two days tour</p>
+            <p class="text-start mt-0 "><i class="bi text-success bi-calendar-check-fill me-2"></i> 28/01/20023 |
+              30/01/2023</p>
+          </div>
+        </div> <!--  card element -->
+      </div>
+      <div class="col col-12 col-md-6 col-lg-4 d-flex justify-content-center ">
+        <div class="card card-overley">
+          <img src="./images/amsterdam.jpg" height="400" width="150" alt="" class="card-img p-2 rounded-4 ">
+          <div class="card-body mt-0">
+            <h1 class="lead fs-2 d-inline kalam-bold">Amsterdam</h1>
+            <button class="btn btn-success float-end">learn more</button>
+            <p class=" text-start "> <i class=" bi text-success bi-calendar-range-fill me-2 "></i>two days tour</p>
+            <p class="text-start mt-0 "><i class="bi text-success bi-calendar-check-fill me-2"></i> 28/01/20023 |
+              30/01/2023</p>
+          </div>
+        </div> <!--  card element -->
+      </div>
+      <div class="col col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card card-overley">
+          <img src="./images/lisbon.jpg" height="400" width="150" alt="" class="card-img p-2 rounded-4 ">
+          <div class="card-body mt-0">
+            <h1 class="lead fs-2 d-inline kalam-bold">Lisbon</h1>
+            <button class="btn btn-success float-end">learn more</button>
+            <p class=" text-start "> <i class=" bi text-success bi-calendar-range-fill me-2 "></i>two days tour</p>
+            <p class="text-start mt-0 "><i class="bi text-success bi-calendar-check-fill me-2"></i> 28/01/20023 |
+              30/01/2023</p>
+          </div>
+        </div> <!--  card element -->
+      </div>
+      <div class=" col col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card card-overley">
+          <img src="./images/venice.jpg" height="400" width="150" alt="" class="card-img p-2 rounded-4 ">
+          <div class="card-body mt-0">
+            <h1 class="lead fs-2 d-inline kalam-bold">Venice</h1>
+            <button class="btn btn-success float-end">learn more</button>
+            <p class=" text-start "> <i class=" bi text-success bi-calendar-range-fill me-2 "></i>two days tour</p>
+            <p class="text-start mt-0 "><i class="bi text-success bi-calendar-check-fill me-2"></i> 28/01/20023 |
+              30/01/2023</p>
+          </div>
+        </div> <!--  card element -->
+      </div>
+      <div class="col col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card card-overley">
+          <img src="./images/dubai.jpg" height="400" width="150" alt="" class="card-img p-2 rounded-4 ">
+          <div class="card-body mt-0">
+            <h1 class="lead fs-2 d-inline kalam-bold">Dubai</h1>
+            <button class="btn btn-success float-end">learn more</button>
+            <p class=" text-start "> <i class=" bi text-success bi-calendar-range-fill me-2 "></i>two days tour</p>
+            <p class="text-start mt-0 "><i class="bi text-success bi-calendar-check-fill me-2"></i> 28/01/20023 |
+              30/01/2023</p>
+          </div>
+        </div> <!--  card element -->
+      </div>
+
+    </div>
+
+  </section>
+ <figure class="fig-fixed2 m-0">
+    </figure>
+  <!-- ------------------------------------------- image breaker --------------------------------------------------------- -->
+  <div class="container-fluid">
+   
+    <h1 class="kalam-bold fs-1 w-100  my-0  my-5 text-center py-3 text-capitalize">
+      Joiners Reviews
+    </h1>
+  </div>
+  <!-- ------------------------------------------- Reviews --------------------------------------------------------- -->
+  <section id="reviews" class="container-lg ">
+    <div class="row justify-content-center gy-4 mb-5">
+
+      <div class="col col-12 col-lg-4 d-flex justify-content-center">
+        <div class="card bg-dark text-white " style="width: 350px; height: 450px;">
+          <img src="./images/pexels-paulo-marcelo-martins-2412606 (1).jpg" class="w-100 h-100" alt="..."
+            style="border-radius: 35px;">
+          <div class="review-overley">
+          </div>
+          <div class="card-img-overlay d-flex flex-column justify-content-between ">
+            <div class="header">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content.
+            </div>
+            <div class="footer">
+              <img src="./images/vicky-hladynets-C8Ta0gwPbQg-unsplash.jpg"
+                style="border-radius: 50%;  object-fit: cover;" width="100" height="200" alt="" class="float-start">
+              <p class="card-text float-end mt-5 me-5 bg-light rounded-pill text-dark px-2">Manel Mohamed</p>
+              <p class=" float-end me-5 bg-secondary rounded-pill text-light px-2"><i class="bi bi-clock"></i> 4 january
+                2012</p>
+            </div>
+          </div>
+        </div> <!--  card item -->
+      </div> <!-- colemn -->
+
+      <div class="col col-12 col-lg-4 d-flex justify-content-center">
+        <div class="card bg-dark text-white " style="width: 350px; height: 450px;">
+          <img src="./images/pexels-porapak-apichodilok-346832.jpg" class="w-100 h-100" alt="..."
+            style="border-radius: 35px;">
+          <div class="review-overley">
+          </div>
+          <div class="card-img-overlay d-flex flex-column justify-content-between ">
+            <div class="header">
+              <h5 class="card-title lead"> Amaizing ! </h5>
+              <p class="card-text ">I took an offer for a week trip to europe with guides and i took the bref
+                courseof languages to use duringthe trip.. forimdable! 22 october 2022 </p>
+            </div>
+            <div class="footer">
+              <img src="./images/9df692ffd11991eb41cd755c87d70ffc.jpg" style="border-radius: 50%;  object-fit: cover;"
+                width="100" height="200" alt="" class="float-start">
+              <p class="card-text float-end mt-5 me-5 bg-light rounded-pill text-dark px-2">Manel Mohamed</p>
+              <p class=" float-end me-5 bg-secondary rounded-pill text-light px-2"><i class="bi bi-clock"></i> 4 january
+                2012</p>
+            </div>
+          </div>
+        </div> <!--  card item -->
+      </div> <!-- colemn -->
+
+      <div class="col col-12 col-lg-4 d-flex justify-content-center">
+        <div class="card bg-dark text-white " style="width: 350px; height: 450px;">
+          <img src="./images/pexels-malte-luk-2432299.jpg" class="w-100 h-100" alt="..." style="border-radius: 35px;">
+          <div class="review-overley">
+          </div>
+          <div class="card-img-overlay d-flex flex-column justify-content-between ">
+            <div class="header">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content.
+            </div>
+            <div class="footer">
+              <img
+                src="./images/happy-confident-male-entrepreneur-with-postive-smile-has-beard-mustache-keeps-arms-folded-being-high-spirit-after-successful-meeting-with-partners-poses-against-white-wall-dressed-casually.jpg"
+                style="border-radius: 50%;  object-fit: cover;" width="100" height="200" alt="" class="float-start">
+              <p class="card-text float-end mt-5 me-5 bg-light rounded-pill text-dark px-2">Manel Mohamed</p>
+              <p class=" float-end me-5 bg-secondary rounded-pill text-light px-2"><i class="bi bi-clock"></i> 4 january
+                2012</p>
+            </div>
+          </div>
+        </div> <!--  card item -->
+      </div> <!-- colemn -->
+    </div> <!-- row -->
+  </section>
+  <!-- *************************************************** podcasts ************************************************************* -->
+  <section
+    class="container-lg podcasts kalam-regular my-5 d-flex justify-content-center flex-column align-items-center">
+    <h1 class="kalam-bold fs-1 w-100  text-light  my-0  mt-2 text-center py-3 rounded-2 text-capitalize"
+      style="background-color: rgba(119, 156, 119, 0);">
+      Tourism Podcasts
+    </h1>
+
+
+    <div class="card mb-3 shadow-lg ">
+      <div class="row g-0 h-100">
+        <div class="col col-12 col-md-4 h-100">
+          <img src="./images/north.jpg" class="clipe w-100 h-100 rounded-start" alt="...">
+        </div>
+        <div class="col col-12 col-md-8 ">
+          <div class="card-body">
+            <h5 class="card-title fs-4  kalam-regular"> A diving into Freezing Spots!</h5>
+            <p class="card-text"><small class="text-muted"><i class="bi bi-calendar-event-fill me-2"></i>Mon, May 25th
+                2023</small></p>
+            <div class="bottom-line"></div>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+            <div class="buttons mt-4 " style="font-size: 15px;">
+              <button style="border: 1px solid green; "><i
+                  class="bi  bi-tag-fill me-2 text-success"></i>Podcast</button>
+              <button style="border: 1px solid green;"><i class="bi bi-clock-fill me-2 text-success"></i>44 min</button>
+              <button style="border: 1px solid green;"><i class="bi me-2 bi-google-play text-success"></i>Play
+                episode</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="card mb-3 shadow-lg">
+      <div class="row g-0 h-100 ">
+        <div class="col col-12 col-md-4 h-100  order-sm-2 ">
+          <img src="./images/lang2.jpg" class="clips w-100 h-100 rounded-end " alt="...">
+        </div>
+        <div class="col col-12 col-md-8 ">
+          <div class="card-body">
+            <h5 class="card-title fs-4  kalam-regular"> Languages And Tourism</h5>
+            <p class="card-text"><small class="text-muted"><i class="bi bi-calendar-event-fill me-2"></i>Mon, May 25th
+                2023</small></p>
+            <div class="bottom-line"></div>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+            <div class="buttons mt-4 " style="font-size: 15px;">
+              <button style="border: 1px solid green; "><i
+                  class="bi  bi-tag-fill me-2 text-success"></i>Podcast</button>
+              <button style="border: 1px solid green;"><i class="bi bi-clock-fill me-2 text-success"></i>44 min</button>
+              <button style="border: 1px solid green;"><i class="bi me-2 bi-google-play text-success"></i>Play
+                episode</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card mb-3 shadow-lg">
+      <div class="row g-0 h-100">
+        <div class="col col-12 col-md-4 h-100 ">
+          <img src="./images/weard.jpg" class="clipe w-100 h-100 rounded-start " alt="...">
+        </div>
+        <div class="col col-12 col-md-8 ">
+          <div class="card-body">
+            <h5 class="card-title fs-4  kalam-regular"> The weardest Places In The World</h5>
+            <p class="card-text"><small class="text-muted"><i class="bi bi-calendar-event-fill me-2"></i>Mon, May 25th
+                2023</small></p>
+            <div class="bottom-line"></div>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+            <div class="buttons mt-4 " style="font-size: 15px;">
+              <button style="border: 1px solid green; "><i
+                  class="bi  bi-tag-fill me-2 text-success"></i>Podcast</button>
+              <button style="border: 1px solid green;"><i class="bi bi-clock-fill me-2 text-success"></i>44 min</button>
+              <button style="border: 1px solid green;"><i class="bi me-2 bi-google-play text-success"></i>Play
+                episode</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card mb-3 shadow-lg">
+      <div class="row g-0 h-100">
+        <div class="col col-12 col-md-4 h-100  order-sm-2 ">
+          <img src="./images/money.jpg" class="clips  w-100 h-100 rounded-end" alt="...">
+        </div>
+        <div class="col col-12 col-md-8 ">
+          <div class="card-body">
+            <h5 class="card-title fs-4 kalam-regular"> Where Do I Get visa And Money For My dream's travel?</h5>
+            <p class="card-text"><small class="text-muted"><i class="bi bi-calendar-event-fill me-2"></i>Mon, May 25th
+                2023</small></p>
+            <div class="bottom-line"></div>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+            <div class="buttons mt-4 " style="font-size: 15px;">
+              <button style="border: 1px solid green; "><i
+                  class="bi  bi-tag-fill me-2 text-success"></i>Podcast</button>
+              <button style="border: 1px solid green;"><i class="bi bi-clock-fill me-2 text-success"></i>44 min</button>
+              <button style="border: 1px solid green;"><i class="bi me-2 bi-google-play text-success"></i>Play
+                episode</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card mb-3 shadow-lg">
+      <div class="row g-0 h-100">
+        <div class="col col-12 col-md-4 h-100 ">
+          <img src="./images/mise.jpg" class="clipe w-100 h-100 rounded-start" alt="...">
+        </div>
+        <div class="col col-12 col-md-8 ">
+          <div class="card-body">
+            <h5 class="card-title fs-4 kalam-regular"> A plan Or A Train ? In Witch There IS The Real traveling vibes ?</h5>
+            <p class="card-text"><small class="text-muted"><i class="bi bi-calendar-event-fill me-2"></i>Mon, May 25th
+                2023</small></p>
+            <div class="bottom-line"></div>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+            <div class="buttons mt-4 " style="font-size: 15px;">
+              <button style="border: 1px solid green; "><i
+                  class="bi  bi-tag-fill me-2 text-success"></i>Podcast</button>
+              <button style="border: 1px solid green;"><i class="bi bi-clock-fill me-2 text-success"></i>44 min</button>
+              <button style="border: 1px solid green;"><i class="bi me-2 bi-google-play text-success"></i>Play
+                episode</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+<!-- ******************************************* Last Icons********************************************************* -->
+  <section class="join-us container-lg">
+    <h1 class="kalam-bold fs-1 w-100  text-light  my-0  mt-2 text-center py-3 rounded-2 text-capitalize"
+      style="background-color: rgba(119, 156, 119, 0);">
+      Join Us
+    </h1>
+
+    <div class="row g-3 justify-content-between mb-3">
+      <div class="col col-12 col-md-3 ">
+        <div class="card text-center py-2 m-auto shadow-lg border-0">
+          <p class="lead">subscribe now</p>
+          <a href="#"> <img src="./images/icons8-facebook-188.png" width="100px" height="100px" alt=""
+              class="m-auto "></a>
+          <p class="lead">subscribe now</p>
+        </div>
+      </div>
+      <div class="col col-12 col-md-3 ">
+        <div class="card text-center py-2 m-auto shadow-lg border-0">
+          <p class="lead">subscribe now</p>
+          <a href="#"><img src="./images/icons8-instagram-188.png" width="100px" height="100px" alt=""
+              class="m-auto "></a>
+          <p class="lead">subscribe now</p>
+        </div>
+      </div>
+      <div class="col col-12 col-md-3 ">
+        <div class="card text-center py-2 m-auto shadow-lg border-0">
+          <p class="lead">subscribe now</p>
+          <a href="#"> <img src="./images/icons8-twitter-entouré-188.png" width="100px" height="100px" alt=""
+              class="m-auto"></a>
+          <p class="lead">subscribe now</p>
+        </div>
+      </div>
+      <div class="col col-12 col-md-3  ">
+        <div class="card text-center  py-2 m-auto shadow-lg border-0">
+          <p class="lead">subscribe now</p>
+          <a href="#"> <img src="./images/icons8-whatsapp-188.png" width="100px" height="100px" alt=""
+              class="m-auto"></a>
+          <p class="lead">subscribe now</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="bg-success py-3 text-center container-fluid">
+    <div class="row text-light ">
+      <div class="col col-12 col-md-4">
+        <a class="text-decoration-none text-center d-block ms-2  text-light fw-bold mx-5 agbalumo-regular fs-5"
+          href="#">
+          <i class="bi bi-globe-europe-africa me-1 fs-3"></i>
+          Tourist Path <span class="playfair-display ">Contact Us</span>
+        </a>
+        <p>Tel : 000 999 2548</p>
+        <p>Adress : ALGERIA</p>
+        <p>Fax : 0000-0000-000 </p>
+      </div>
+
+
+      <div class="col col-12 col-md-4">
+        <a class="text-decoration-none text-center d-block ms-2 text-light fw-bold mx-5 agbalumo-regular fs-5" href="#">
+          <i class="bi bi-globe-europe-africa me-1 fs-3"></i>
+          Tourist Path <span class="playfair-display ">Imporatant Links</span>
+        </a>
+        <p>Tel : 000 999 2548</p>
+        <p>Adress : ALGERIA</p>
+        <p>Fax : 0000-0000-000 </p>
+      </div>
+
+
+      <div class="col col-12 col-md-4">
+        <a class="text-decoration-none text-center d-block ms-2 text-light fw-bold mx-5 agbalumo-regular fs-5" href="#">
+          <i class="bi bi-globe-europe-africa me-1 fs-3"></i>
+          Tourist Path <span class="playfair-display ">vision</span>
+        </a>
+        <p>Tel : 000 999 2548</p>
+        <p>Adress : ALGERIA</p>
+        <p>Fax : 0000-0000-000 </p>
+      </div>
+
+    </div>
+    <hr class="text-light">
+    <p class="elegant">COPURIGHT &copy; 2024 MANEL BOUKHALFA, TOURIST PATH, ALL RIGHTS</p>
+    <hr>
+
+
+
+
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+
+  <script>
+
+    var btn = document.querySelectorAll(".b-tooltip")
+    
+    btn.forEach(function ss(bot) {
+      bot.onclick = () => {
+      bot.nextElementSibling.textContent   = " copied !"
+      alert("تم نسخ النص")
+      }
+
+    })
+
+    
+    
+
+
+
+  </script>
+
+</body>
+
+</html>
+<!--رجعيه مودل بدلي الانذار تع الكوبي 
+زيدي أنيمايشن للنافبار
+النافبار سقميها باش تكون أكثر شفافية كي تنزلي سكرول-->
